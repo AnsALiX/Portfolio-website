@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AnsAli · PORTFOLIO</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body data-screen="home">
+
+  <!-- Background art layers -->
+  <!-- Background art layers -->
+  <div id="bg" aria-hidden="true">
+    <div class="bg-layer" id="bg-stripes"></div>
+    <svg class="bg-star" style="left:6%;top:8%;width:26vmax;height:26vmax" viewBox="0 0 100 100">
+      <polygon points="50,0 60,35 98,35 68,57 78,94 50,72 22,94 32,57 2,35 40,35" fill="#000" />
+    </svg>
+    <svg class="bg-star s2" style="right:4%;bottom:6%;width:34vmax;height:34vmax" viewBox="0 0 100 100">
+      <polygon points="50,0 60,35 98,35 68,57 78,94 50,72 22,94 32,57 2,35 40,35" fill="#fff" />
+    </svg>
+    
+   <img class="menu-art" id="art-home" src="assets/hero.jpeg" style="opacity: 1 !important; visibility: visible !important; display: block !important; object-fit: cover !important; object-position: right 0px bottom 80px !important;" alt="Home" onload="document.body.classList.add('has-art-home')">
+
+    <img class="menu-art" id="art-projects" src="assets/projects/pro.jpeg" alt="Projects"
+      onload="document.body.classList.add('has-art-projects')">
+      
+    <img class="menu-art" id="art-skills" src="assets/menus/skills.jpg" alt="Skills"
+      onload="document.body.classList.add('has-art-skills')">
+      
+    <img class="menu-art" id="art-about" src="assets/menus/about.jpg" alt="About"
+      onload="document.body.classList.add('has-art-about')">
+      
+    <img class="menu-art" id="art-contact" src="assets/menus/contact.jpg" alt="Contact"
+      onload="document.body.classList.add('has-art-contact')">
+      
+    <!-- These two divs create the comic-book dot and shadow effects -->
+    <div class="bg-layer" id="bg-halftone"></div>
+    <div class="bg-layer" id="bg-vignette"></div>
+  </div>
+  <div id="slash" aria-hidden="true"></div>
+
+  <!-- Hero art: drop your file at assets/hero.png (transparent PNG looks best) -->
+  <!-- <img id="hero-art" src="assets/hero.jpeg" alt="" onerror="this.remove()"> -->
+
+  <!-- Screen transition wipe -->
+  <div id="wipe" aria-hidden="true">
+    <div class="pane p3"></div>
+    <div class="pane p2"></div>
+    <div class="pane p1"></div>
+    <div class="flash"></div>
+  </div>
+
+  <!-- Custom animated cursor + select sound -->
+  <div id="cursor" aria-hidden="true"></div>
+  <audio id="sfx-select" src="assets/sfx/select.mp3" preload="auto"></audio>
+  <button id="audio-toggle" aria-label="Turn audio on">🔇</button>
+
+  <!-- <video id="home-video" autoplay muted loop playsinline>
+    <source src="assets/video/home-background.mp4" type="video/mp4">
+  </video> -->
+
+
+  <div id="shell">
+    <div id="hud-top">
+      <div class="hud-tag">Portfolio // Ans Ali</div>
+      <div class="hud-tag alt">SOFTWARE ENGINEER</div>
+    </div>
+
+    <div id="stage">
+
+      <!-- HOME -->
+      <section class="screen active" id="screen-home" aria-label="Main menu">
+        <div id="intro-eyebrow">Take a look at my work</div>
+        <h1 id="big-name">
+          <span class="ransom" data-ransom="ANS"></span>
+          <span class="ransom" data-ransom="ALI"></span>
+        </h1>
+        <p id="tagline">
+          Software Engineering student at COMSATS Lahore building scalable applications. I bridge complex data
+          structures with clean interfaces using C++, Java, Python, and React Native.
+        </p>
+        <nav id="menu" aria-label="Sections">
+          <button class="menu-item sel" data-target="projects">
+            <span class="ransom" data-ransom="PROJECTS"></span><span class="cursor-mark">◀</span>
+          </button>
+          <button class="menu-item" data-target="skills">
+            <span class="ransom" data-ransom="SKILLS"></span><span class="cursor-mark">◀</span>
+          </button>
+          <button class="menu-item" data-target="about">
+            <span class="ransom" data-ransom="ABOUT"></span><span class="cursor-mark">◀</span>
+          </button>
+          <button class="menu-item" data-target="contact">
+            <span class="ransom" data-ransom="CONTACT"></span><span class="cursor-mark">◀</span>
+          </button>
+        </nav>
+      </section>
+
+      <!-- PROJECTS -->
+      <section class="screen sub" id="screen-projects" aria-label="Projects">
+        <div class="screen-head"><span class="ransom" data-ransom="PROJECTS"></span></div>
+        <button class="back-hint" data-back>ESC · Back</button>
+        <div class="grid-label"><span class="bar"></span>Featured</div>
+        <div id="feat-grid" class="grid"></div>
+        <div class="grid-label"><span class="bar"></span>All repositories</div>
+        <div id="repo-status">Contacting GitHub…</div>
+        <div id="repo-grid" class="grid"></div>
+      </section>
+
+      <!-- SKILLS -->
+      <section class="screen sub" id="screen-skills" aria-label="Skills">
+        <div class="screen-head"><span class="ransom" data-ransom="SKILLS"></span></div>
+        <button class="back-hint" data-back>ESC · Back</button>
+        <div id="skills-body"></div>
+      </section>
+
+      <!-- ABOUT -->
+      <section class="screen sub align-right" id="screen-about" aria-label="About">
+
+        <div class="screen-head">
+          <span class="ransom" data-ransom="ABOUT"></span>
+        </div>
+
+        <button class="back-hint" data-back>ESC · Back</button>
+
+        <div class="paper">
+
+    <!-- Profile photo -->
+    <figure class="about-photo">
+      <img src="assets/me.jpeg" alt="Muhammad Ans Ali">
+      <figcaption>ANS ALI · LAHORE</figcaption>
+    </figure>
+
+    <!-- INTRODUCTION -->
+    <p class="quote">
+      I am a
+      <strong class="about-highlight">Software Engineering undergraduate at COMSATS Lahore</strong>
+      driven by the challenge of turning complex logic into seamless digital experiences.
+    </p>
+
+    <br>
+
+    <!-- PROFILE -->
+    <p>
+      My technical journey began with a rigorous science foundation during my matriculation, which naturally evolved into studying Computer Science at Government College University (GCU). Today, I am focused on bridging heavy backend architecture with clean, responsive front-end execution.
+    </p>
+
+    <br>
+
+    <!-- TECHNICAL INTEREST -->
+    <p>
+      My core workflow revolves around
+      <strong class="about-highlight">React Native, C++, Java, and Python.</strong>
+      I thrive on understanding the deep-level mechanics of algorithms and building fully functional application prototypes from the ground up rather than relying blindly on pre-packaged abstractions.
+    </p>
+
+    <br>
+
+    <!-- PROJECTS -->
+    <p>
+      I recently engineered a
+      <strong class="about-highlight">fully functioning React Native application prototype</strong>,
+      optimizing for cross-platform mobile performance and an intuitive user experience.
+    </p>
+
+    <br>
+
+    <p>
+      On the logic and systems side, I architected
+      <strong class="about-highlight">NexusSystem</strong>, a C++ social network engine built entirely on custom data structures directed graphs, tries, max-heaps, and hash tables to dynamically map user connections.
+    </p>
+
+    <br>
+
+    <p>
+      I also led the deployment of
+      <strong class="about-highlight">Kabaar to Kamaal</strong>, an AI-driven web app containerized with Docker and hosted on Google Cloud Run, and coded a custom
+      <strong class="about-highlight">console-based ASCII Space Invaders game</strong> purely in C++.
+    </p>
+
+    <br>
+
+    <!-- OUTSIDE ACADEMICS -->
+    <p>
+      Outside the terminal, I train in
+      <strong class="about-highlight">calisthenics and football</strong>, and study the narratives and art direction of series like <em>Black Clover</em>, <em>Attack on Titan</em> and <em>Monster</em>.
+    </p>
+
+    <br>
+
+    <!-- PERSONAL QUOTE -->
+    <p class="about-quote">
+      <strong>
+        “My magic is never giving up!”<br>
+      </strong>
+      <br>
+      — Asta
+    </p>
+
+    <br>
+
+    <!-- CURRENT GOAL -->
+    <p>
+      Right now, my trajectory is set on securing
+      <strong class="about-highlight">building a tech startup.</strong>
+      I am constantly pushing to scale my projects beyond the local host.
+    </p>
+
+  </div>
+        <!-- CV BUTTON -->
+        <a class="cv-btn" href="assets/cv/Ans_resume.pdf" download="Ans_Ali_resume.pdf">
+          <span>⬇ Download my CV (PDF)</span>
+        </a>
+
+      </section>
+      <!-- CONTACT -->
+      <section class="screen sub align-right" id="screen-contact" aria-label="Contact">
+        <div class="screen-head"><span class="ransom" data-ransom="CONTACT"></span></div>
+        <button class="back-hint" data-back>ESC · Back</button>
+        <div class="paper" style="max-width:620px">
+          <p>I'm open to <strong>software engineering roles, international scholarships, and research opportunities</strong> alongside startup collaborations. Drop me a message below and it goes straight to my inbox,
+            or find me on any of these:</p>
+        </div>
+        <div class="contact-list">
+          <a class="contact-chip" href="mailto:ansali430@gmail.com"><span>Email ✉</span></a>
+
+          <a class="contact-chip" href="https://github.com/AnsALiX" target="_blank" rel="noopener"><span>GitHub
+              ↗</span></a>
+
+          <a class="contact-chip" href="https://www.linkedin.com/in/muhammad-ans-ali" target="_blank"
+            rel="noopener"><span>LinkedIn ↗</span></a>
+
+          <a class="contact-chip" href="assets/cv/Ans_resume.pdf" download="Muhammad_Ans_Ali_Resume.pdf"><span>CV
+              ⬇</span></a>
+        </div>
+
+        <!-- Message form — relayed to your inbox via formsubmit.co.
+           NOTE: the first-ever submission emails you a one-time activation link. -->
+        <form id="contact-form" class="paper" style="max-width:620px" novalidate>
+          <div class="form-head">Send me a message</div>
+          <label class="field">
+            <span>Name</span>
+            <input type="text" name="name" required maxlength="100" autocomplete="name">
+          </label>
+          <label class="field">
+            <span>Your email</span>
+            <input type="email" name="email" required maxlength="150" autocomplete="email">
+          </label>
+          <label class="field">
+            <span>Message</span>
+            <textarea name="message" required rows="5" maxlength="3000"></textarea>
+          </label>
+          <!-- honeypot: bots fill this, humans never see it -->
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-5000px"
+            aria-hidden="true">
+          <div class="form-foot">
+            <button type="submit" class="cv-btn form-send"><span>Send it ➤</span></button>
+            <div id="form-status" role="status"></div>
+          </div>
+        </form>
+      </section>
+
+    </div>
+
+    <div id="hud-bottom">
+      <span><span class="key">↑↓</span>Select</span>
+      <span><span class="key">Enter</span>Confirm</span>
+      <span><span class="key">Esc</span>Back</span>
+      <span style="margin-left:auto;opacity:.8" id="clock"></span>
+    </div>
+  </div>
+
+  <!-- MVC: model = data, view = DOM, controller = events -->
+  <script src="js/model.js" defer></script>
+  <script src="js/view.js" defer></script>
+  <script src="js/controller.js" defer></script>
+</body>
+
+</html>
